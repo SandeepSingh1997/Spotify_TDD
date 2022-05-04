@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class UserTest {
     @Test
@@ -46,6 +47,16 @@ public class UserTest {
         int actualSharedPlaylistsCount = user.sharedPlayListsCount();
 
         assertThat(actualSharedPlaylistsCount, is(expectedSharedPlaylistsCount));
+    }
+
+    @Test
+    public void shouldShowSharedPlaylistsOfTheUser(){
+        UserDouble user = new UserDouble();
+
+        user.showSharedPlaylists();
+        boolean isShowSharedPlaylistsCalled = user.isShowSharedPlaylistsCalled;
+
+        assertTrue(isShowSharedPlaylistsCalled);
     }
 
 }

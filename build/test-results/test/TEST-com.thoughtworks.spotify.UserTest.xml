@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.thoughtworks.spotify.UserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-05-04T17:14:36" hostname="sandeepsingh1thoughtworkscoms-MacBook-Pro.local" time="0.02">
+<testsuite name="com.thoughtworks.spotify.UserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-05-04T17:35:51" hostname="sandeepsingh1thoughtworkscoms-MacBook-Pro.local" time="0.017">
   <properties/>
-  <testcase name="shouldReturnCountOfSharedPlaylistsAsOneWhenThereIsOneSharedPlaylist()" classname="com.thoughtworks.spotify.UserTest" time="0.02"/>
+  <testcase name="shouldShowSharedPlaylistsOfTheUser()" classname="com.thoughtworks.spotify.UserTest" time="0.017"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

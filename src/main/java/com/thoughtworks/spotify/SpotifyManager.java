@@ -25,4 +25,11 @@ public class SpotifyManager {
         }
         return openPlayListsCount;
     }
+
+    public void showOpenPlaylists(){
+        for(User user : userList){
+            user.showSharedPlaylists();
+        }
+    }
+
 }

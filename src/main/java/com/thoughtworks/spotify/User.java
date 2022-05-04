@@ -27,5 +27,13 @@ public class User {
         }
         return sharedPlaylistsCount;
     }
+
+    public void showSharedPlaylists() {
+        for(PlayList playList : playLists){
+            if(playList.isShared())
+            { System.out.println(playList);
+            }
+        }
+    }
 }
 
