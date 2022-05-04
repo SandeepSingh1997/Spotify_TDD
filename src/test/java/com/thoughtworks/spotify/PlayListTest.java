@@ -54,4 +54,14 @@ public class PlayListTest {
             playList.removeSong(song);
         });
     }
+
+    @Test
+    public void shouldBeAbleToMakeAPlaylistShared(){
+        PlayList playList = new PlayList();
+
+        playList.share();
+
+        assertThat(playList.isShared(), is(true));
+    }
+
 }
