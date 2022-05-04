@@ -17,4 +17,12 @@ public class SpotifyManager {
     public int userCount() {
         return userList.size();
     }
+
+    public int countOpenPlaylists() {
+        int openPlayListsCount = 0;
+        for(User user : userList){
+            openPlayListsCount += user.sharedPlayListsCount();
+        }
+        return openPlayListsCount;
+    }
 }

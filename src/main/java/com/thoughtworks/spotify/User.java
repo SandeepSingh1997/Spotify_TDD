@@ -17,4 +17,15 @@ public class User {
     public int playListsCount() {
         return playLists.size();
     }
+
+    public int sharedPlayListsCount() {
+        int sharedPlaylistsCount = 0;
+        for(PlayList playList : playLists){
+            if(playList.isShared()){
+                sharedPlaylistsCount++;
+            }
+        }
+        return sharedPlaylistsCount;
+    }
 }
+
