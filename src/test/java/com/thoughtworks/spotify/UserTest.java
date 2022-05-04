@@ -33,6 +33,19 @@ public class UserTest {
         assertThat(actualPlayListsCount, is(expectedPlayListsCount));
     }
 
+    @Test
+    public void shouldReturnCountOfSharedPlaylistsAsOneWhenThereIsOneSharedPlaylist(){
+        User user = new User();
+        PlayList playList1 = new PlayList();
+        PlayList playList2 = new PlayList();
+        playList1.share();
+        user.createPlaylist(playList1);
+        user.createPlaylist(playList2);
+        int expectedSharedPlaylistsCount = 1;
 
+        int actualSharedPlaylistsCount = user.sharedPlayListsCount();
+
+        assertThat(actualSharedPlaylistsCount, is(expectedSharedPlaylistsCount));
+    }
 
 }
