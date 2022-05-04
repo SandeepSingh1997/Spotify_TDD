@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SpotifyManagerTest {
     @Test
@@ -57,7 +58,10 @@ public class SpotifyManagerTest {
         spotifyManager.addUser(user1);
         spotifyManager.addUser(user2);
 
+        spotifyManager.showOpenPlaylists();
         boolean isShowOpenPlaylistsCalled = spotifyManager.isShowOpenPlaylistsCalled;
+
+        assertTrue(isShowOpenPlaylistsCalled);
     }
 
 }
