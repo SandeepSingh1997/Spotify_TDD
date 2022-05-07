@@ -10,7 +10,7 @@ public class User {
         playLists = new ArrayList<>();
     }
 
-    public void createPlaylist(PlayList playList) {
+    public void addPlaylist(PlayList playList) {
         playLists.add(playList);
     }
 

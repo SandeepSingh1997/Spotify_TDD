@@ -8,12 +8,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class UserTest {
     @Test
-    public void shouldBeAbletoCreateAPlayList(){
+    public void shouldBeAbletoAddAPlayList(){
         User user = new User();
         PlayList playList = new PlayList();
         int expectedPlayListsCount = 1;
 
-        user.createPlaylist(playList);
+        user.addPlaylist(playList);
         int actualPlayListsCount = user.playListsCount();
 
         assertThat(actualPlayListsCount, is(expectedPlayListsCount));
@@ -26,8 +26,8 @@ public class UserTest {
         PlayList playList2 = new PlayList();
         int expectedPlayListsCount = 2;
 
-        user.createPlaylist(playList1);
-        user.createPlaylist(playList2);
+        user.addPlaylist(playList1);
+        user.addPlaylist(playList2);
         int actualPlayListsCount = user.playListsCount();
 
 
@@ -40,8 +40,8 @@ public class UserTest {
         PlayList playList1 = new PlayList();
         PlayList playList2 = new PlayList();
         playList1.share();
-        user.createPlaylist(playList1);
-        user.createPlaylist(playList2);
+        user.addPlaylist(playList1);
+        user.addPlaylist(playList2);
         int expectedSharedPlaylistsCount = 1;
 
         int actualSharedPlaylistsCount = user.sharedPlayListsCount();

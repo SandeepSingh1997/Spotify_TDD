@@ -27,9 +27,9 @@ public class SpotifyManagerTest {
         PlayList playList1 = new PlayList();
         PlayList playList2 = new PlayList();
         PlayList playList3 = new PlayList();
-        user1.createPlaylist(playList1);
-        user1.createPlaylist(playList2);
-        user2.createPlaylist(playList3);
+        user1.addPlaylist(playList1);
+        user1.addPlaylist(playList2);
+        user2.addPlaylist(playList3);
         playList1.share();
         playList3.share();
         spotifyManager.addUser(user1);
@@ -50,9 +50,9 @@ public class SpotifyManagerTest {
         PlayList playList1 = new PlayList();
         PlayList playList2 = new PlayList();
         PlayList playList3 = new PlayList();
-        user1.createPlaylist(playList1);
-        user1.createPlaylist(playList2);
-        user2.createPlaylist(playList3);
+        user1.addPlaylist(playList1);
+        user1.addPlaylist(playList2);
+        user2.addPlaylist(playList3);
         playList1.share();
         playList3.share();
         spotifyManager.addUser(user1);
