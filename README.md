@@ -13,8 +13,11 @@ A Java application created following the concepts of Test Driven Development and
 * A playlist can be shared publicly.
 * Can view open(publicly shared) playlists.
 * A playlist can be rated.
+* Shuffle play of a playlist
+* Can share a particular playlist to a particular user
 
 ### Requirements
 1. User
 2. Playlist
 3. Song
+4. SpotifyManager

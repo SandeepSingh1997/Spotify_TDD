@@ -1,5 +1,6 @@
 package com.thoughtworks.spotify;
 
+import com.thoughtworks.exceptions.InvalidRatingException;
 import com.thoughtworks.exceptions.SongAlreadyPresentInThePlaylistException;
 import com.thoughtworks.exceptions.SongIsNotPresentInThePlaylistException;
 import org.junit.jupiter.api.Test;
@@ -62,6 +63,25 @@ public class PlayListTest {
         playList.share();
 
         assertThat(playList.isShared(), is(true));
+    }
+
+    @Test
+    public void shouldBeAbleToRateAPlaylistFromOneToFive() throws InvalidRatingException {
+        PlayList playList = new PlayList();
+        int expectedRating = 1;
+
+        playList.rate(1);
+        int actualRating = playList.getRating();
+
+        assertThat(actualRating, is(expectedRating));
+    }
+
+    @Test
+    public void shouldReturnInvalidRatingExceptionIfPlaylistIsRatedOutsideRangeOneToFive(){
+        PlayList playList = new PlayList();
+        assertThrows(InvalidRatingException.class, ()->{
+           playList.rate(10);
+        });
     }
 
 }

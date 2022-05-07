@@ -1,5 +1,6 @@
 package com.thoughtworks.spotify;
 
+import com.thoughtworks.exceptions.InvalidRatingException;
 import com.thoughtworks.exceptions.SongAlreadyPresentInThePlaylistException;
 import com.thoughtworks.exceptions.SongIsNotPresentInThePlaylistException;
 
@@ -9,6 +10,7 @@ import java.util.List;
 public class PlayList {
     private List<Song> songsList;
     private boolean isShared;
+    private int rating;
 
     public PlayList(){
         songsList = new ArrayList<>();
@@ -35,5 +37,14 @@ public class PlayList {
 
     public boolean isShared() {
         return isShared;
+    }
+
+    public void rate(int rating) throws InvalidRatingException {
+        if(rating > 5 || rating < 1) throw new InvalidRatingException();
+        this.rating = rating;
+    }
+
+    public int getRating() {
+        return rating;
     }
 }
