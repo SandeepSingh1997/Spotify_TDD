@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
+    int userId;
     private List<PlayList> playLists;
 
-    public User(){
+    public User(int userId){
+        this.userId = userId;
         playLists = new ArrayList<>();
     }
 
@@ -14,7 +16,7 @@ public class User {
         playLists.add(playList);
     }
 
-    public int playListsCount() {
+    public int playListsSize() {
         return playLists.size();
     }
 

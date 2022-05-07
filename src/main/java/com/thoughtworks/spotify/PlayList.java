@@ -22,7 +22,7 @@ public class PlayList {
         songsList.add(song);
     }
 
-    public int songsCount() {
+    public int size(){
         return songsList.size();
     }
 

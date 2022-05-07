@@ -17,7 +17,7 @@ public class PlayListTest {
         int expectedSongsCount = 1;
 
         playList.addSong(song);
-        int actualSongsCount = playList.songsCount();
+        int actualSongsCount = playList.size();
 
         assertThat(actualSongsCount, is(expectedSongsCount));
     }
@@ -41,7 +41,7 @@ public class PlayListTest {
         int expectedSongsCount = 0;
 
         playList.removeSong(song);
-        int actualSongsCount = playList.songsCount();
+        int actualSongsCount = playList.size();
 
         assertThat(actualSongsCount, is(expectedSongsCount));
     }

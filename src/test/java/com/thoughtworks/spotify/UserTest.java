@@ -9,26 +9,26 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class UserTest {
     @Test
     public void shouldBeAbletoAddAPlayList(){
-        User user = new User();
+        User user = new User(1);
         PlayList playList = new PlayList();
         int expectedPlayListsCount = 1;
 
         user.addPlaylist(playList);
-        int actualPlayListsCount = user.playListsCount();
+        int actualPlayListsCount = user.playListsSize();
 
         assertThat(actualPlayListsCount, is(expectedPlayListsCount));
     }
 
     @Test
     public void shouldBeAbletoCreateTwoPlaylists(){
-        User user = new User();
+        User user = new User(1);
         PlayList playList1 = new PlayList();
         PlayList playList2 = new PlayList();
         int expectedPlayListsCount = 2;
 
         user.addPlaylist(playList1);
         user.addPlaylist(playList2);
-        int actualPlayListsCount = user.playListsCount();
+        int actualPlayListsCount = user.playListsSize();
 
 
         assertThat(actualPlayListsCount, is(expectedPlayListsCount));
@@ -36,7 +36,7 @@ public class UserTest {
 
     @Test
     public void shouldReturnCountOfSharedPlaylistsAsOneWhenThereIsOneSharedPlaylist(){
-        User user = new User();
+        User user = new User(1);
         PlayList playList1 = new PlayList();
         PlayList playList2 = new PlayList();
         playList1.share();
@@ -51,7 +51,7 @@ public class UserTest {
 
     @Test
     public void shouldShowSharedPlaylistsOfTheUser(){
-        UserDouble user = new UserDouble();
+        UserDouble user = new UserDouble(1);
 
         user.showSharedPlaylists();
         boolean isShowSharedPlaylistsCalled = user.isShowSharedPlaylistsCalled;

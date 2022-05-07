@@ -10,7 +10,7 @@ public class SpotifyManagerTest {
     @Test
     public void shouldBeAbleToAddUser(){
         SpotifyManager spotifyManager = new SpotifyManager();
-        User user = new User();
+        User user = new User(1);
         int expectedUsersCount = 1;
 
         spotifyManager.addUser(user);
@@ -22,8 +22,8 @@ public class SpotifyManagerTest {
     @Test
     public void shouldReturnCountOfOpenPlaylistsAsTwoWhenTwoPlaylistsAreShared(){
         SpotifyManager spotifyManager = new SpotifyManager();
-        User user1 = new User();
-        User user2 = new User();
+        User user1 = new User(1);
+        User user2 = new User(2);
         PlayList playList1 = new PlayList();
         PlayList playList2 = new PlayList();
         PlayList playList3 = new PlayList();
@@ -45,8 +45,8 @@ public class SpotifyManagerTest {
     @Test
     public void shouldShowOpenPlaylists(){
         SpotifyManagerDouble spotifyManager = new SpotifyManagerDouble();
-        User user1 = new User();
-        User user2 = new User();
+        User user1 = new User(1);
+        User user2 = new User(2);
         PlayList playList1 = new PlayList();
         PlayList playList2 = new PlayList();
         PlayList playList3 = new PlayList();
