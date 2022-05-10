@@ -1,6 +1,5 @@
 package com.thoughtworks.spotify;
 
-import java.lang.management.PlatformManagedObject;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,8 +40,8 @@ public class User {
         return sharedPlaylists;
     }
 
-    public void sharePlaylistTo(PlayList playList, User user2) {
-        user2.addPlaylist(playList);
+    public void sharePlaylistTo(PlayList playList, User user2) throws CloneNotSupportedException {
+        user2.addPlaylist(playList.clone());
     }
 }
 

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.thoughtworks.spotify.SpotifyManagerTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-05-10T10:23:07" hostname="sandeepsingh1thoughtworkscoms-MacBook-Pro.local" time="0.028">
+  <properties/>
+  <testcase name="shouldBeAbleToAddUser()" classname="com.thoughtworks.spotify.SpotifyManagerTest" time="0.021"/>
+  <testcase name="shouldReturnCountOfOpenPlaylistsAsTwoWhenTwoPlaylistsAreShared()" classname="com.thoughtworks.spotify.SpotifyManagerTest" time="0.004"/>
+  <testcase name="shouldReturnOpenPlaylists()" classname="com.thoughtworks.spotify.SpotifyManagerTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

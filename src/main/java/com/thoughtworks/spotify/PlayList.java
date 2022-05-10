@@ -5,6 +5,8 @@ import com.thoughtworks.exceptions.SongAlreadyPresentInThePlaylistException;
 import com.thoughtworks.exceptions.SongIsNotPresentInThePlaylistException;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class PlayList implements Cloneable{
     private int id;
@@ -50,20 +52,20 @@ public class PlayList implements Cloneable{
     }
 
     public List<Song> getSongs() throws CloneNotSupportedException {
-        List<Song> clonedList = new ArrayList<>();
-        for(Song song : this.songsList){
-            clonedList.add(song.clone());
-        }
+        Stream<Song> songsStream = songsList.stream();
+        List<Song> clonedList = songsStream.map(song -> {
+            try {
+                return song.clone();
+            } catch (CloneNotSupportedException e) {
+                return null;
+            }
+        }).collect(Collectors.toList());
         return clonedList;
     }
 
     public PlayList getShuffledPlaylist() throws CloneNotSupportedException {
         PlayList shuffledPlaylist = this.clone();
-        Random random = new Random();
-        for(int i=0; i<shuffledPlaylist.songsList.size(); i++){
-            int randInt = random.nextInt(shuffledPlaylist.songsList.size());
-            Collections.swap(shuffledPlaylist.songsList,i, randInt);
-        }
+        Collections.shuffle(shuffledPlaylist.songsList);
         return shuffledPlaylist;
     }
 

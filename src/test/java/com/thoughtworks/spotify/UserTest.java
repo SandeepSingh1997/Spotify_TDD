@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class UserTest {
     @Test
@@ -20,7 +19,7 @@ public class UserTest {
     }
 
     @Test
-    public void shouldBeAbletoCreateTwoPlaylists(){
+    public void shouldBeAbletoAddTwoPlaylists(){
         User user = new User(1);
         PlayList playList1 = new PlayList(1);
         PlayList playList2 = new PlayList(2);
@@ -29,7 +28,6 @@ public class UserTest {
         user.addPlaylist(playList1);
         user.addPlaylist(playList2);
         int actualPlayListsCount = user.playListsSize();
-
 
         assertThat(actualPlayListsCount, is(expectedPlayListsCount));
     }
@@ -50,7 +48,7 @@ public class UserTest {
     }
 
     @Test
-    public void shouldBeAbleToShareAPlaylistToAnotherUser(){
+    public void shouldBeAbleToShareAPlaylistToAnotherUser() throws CloneNotSupportedException {
         User user1 = new User(1);
         User user2 = new User(2);
         PlayList playList = new PlayList(1);
