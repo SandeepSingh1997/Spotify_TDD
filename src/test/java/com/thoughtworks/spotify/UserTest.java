@@ -10,7 +10,7 @@ public class UserTest {
     @Test
     public void shouldBeAbletoAddAPlayList(){
         User user = new User(1);
-        PlayList playList = new PlayList();
+        PlayList playList = new PlayList(1);
         int expectedPlayListsCount = 1;
 
         user.addPlaylist(playList);
@@ -22,8 +22,8 @@ public class UserTest {
     @Test
     public void shouldBeAbletoCreateTwoPlaylists(){
         User user = new User(1);
-        PlayList playList1 = new PlayList();
-        PlayList playList2 = new PlayList();
+        PlayList playList1 = new PlayList(1);
+        PlayList playList2 = new PlayList(2);
         int expectedPlayListsCount = 2;
 
         user.addPlaylist(playList1);
@@ -37,8 +37,8 @@ public class UserTest {
     @Test
     public void shouldReturnCountOfSharedPlaylistsAsOneWhenThereIsOneSharedPlaylist(){
         User user = new User(1);
-        PlayList playList1 = new PlayList();
-        PlayList playList2 = new PlayList();
+        PlayList playList1 = new PlayList(1);
+        PlayList playList2 = new PlayList(2);
         playList1.share();
         user.addPlaylist(playList1);
         user.addPlaylist(playList2);
@@ -50,13 +50,16 @@ public class UserTest {
     }
 
     @Test
-    public void shouldShowSharedPlaylistsOfTheUser(){
-        UserDouble user = new UserDouble(1);
+    public void shouldBeAbleToShareAPlaylistToAnotherUser(){
+        User user1 = new User(1);
+        User user2 = new User(2);
+        PlayList playList = new PlayList(1);
+        int expectedPlaylistSize = 1;
 
-        user.showSharedPlaylists();
-        boolean isShowSharedPlaylistsCalled = user.isShowSharedPlaylistsCalled;
+        user1.sharePlaylistTo(playList, user2);
+        int actualPlaylistSize = user2.playListsSize();
 
-        assertTrue(isShowSharedPlaylistsCalled);
+        assertThat(actualPlaylistSize, is(expectedPlaylistSize));
     }
 
 }

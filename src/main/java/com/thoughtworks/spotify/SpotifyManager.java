@@ -26,10 +26,13 @@ public class SpotifyManager {
         return openPlayListsCount;
     }
 
-    public void showOpenPlaylists(){
+    public List<PlayList> getOpenPlaylists() throws CloneNotSupportedException {
+        List<PlayList> openPlaylistList = new ArrayList<>();
         for(User user : userList){
-            user.showSharedPlaylists();
+            for(PlayList openPlaylist : user.getSharedPlaylists()){
+                openPlaylistList.add(openPlaylist);
+            }
         }
+        return openPlaylistList;
     }
-
 }

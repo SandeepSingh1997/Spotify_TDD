@@ -4,15 +4,16 @@ import com.thoughtworks.exceptions.InvalidRatingException;
 import com.thoughtworks.exceptions.SongAlreadyPresentInThePlaylistException;
 import com.thoughtworks.exceptions.SongIsNotPresentInThePlaylistException;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-public class PlayList {
+public class PlayList implements Cloneable{
+    private int id;
     private List<Song> songsList;
     private boolean isShared;
     private int rating;
 
-    public PlayList(){
+    public PlayList(int id){
+        this.id = id;
         songsList = new ArrayList<>();
         isShared = false;
     }
@@ -46,5 +47,43 @@ public class PlayList {
 
     public int getRating() {
         return rating;
+    }
+
+    public List<Song> getSongs() throws CloneNotSupportedException {
+        List<Song> clonedList = new ArrayList<>();
+        for(Song song : this.songsList){
+            clonedList.add(song.clone());
+        }
+        return clonedList;
+    }
+
+    public PlayList getShuffledPlaylist() throws CloneNotSupportedException {
+        PlayList shuffledPlaylist = this.clone();
+        Random random = new Random();
+        for(int i=0; i<shuffledPlaylist.songsList.size(); i++){
+            int randInt = random.nextInt(shuffledPlaylist.songsList.size());
+            Collections.swap(shuffledPlaylist.songsList,i, randInt);
+        }
+        return shuffledPlaylist;
+    }
+
+    @Override
+    protected PlayList clone() throws CloneNotSupportedException {
+        PlayList clonedPlaylist = new PlayList(id);
+        clonedPlaylist.songsList = getSongs();
+        return clonedPlaylist;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PlayList playList = (PlayList) o;
+        return id == playList.id ;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

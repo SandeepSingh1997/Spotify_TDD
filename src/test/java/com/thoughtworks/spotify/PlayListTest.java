@@ -12,8 +12,8 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PlayListTest {
     @Test
     public void shouldBeAbleToAddASongToThePlayList() throws SongAlreadyPresentInThePlaylistException {
-        PlayList playList = new PlayList();
-        Song song = new Song();
+        PlayList playList = new PlayList(1);
+        Song song = new Song(1);
         int expectedSongsCount = 1;
 
         playList.addSong(song);
@@ -23,20 +23,20 @@ public class PlayListTest {
     }
 
     @Test
-    public void shouldNotBeAbleToAddSongToThePlaylistIfTheSongAlreadyExists() throws SongAlreadyPresentInThePlaylistException {
-        PlayList playList = new PlayList();
-        Song song = new Song();
+    public void shouldNotBeAbleToAddASongToThePlaylistWhenTheSongAlreadyExists() throws SongAlreadyPresentInThePlaylistException {
+        PlayList playList = new PlayList(1);
+        Song song = new Song(1);
         playList.addSong(song);
 
-        assertThrows(SongAlreadyPresentInThePlaylistException.class, ()->{
+        assertThrows(SongAlreadyPresentInThePlaylistException.class, () -> {
             playList.addSong(song);
         });
     }
 
     @Test
-    public void shouldBeAbleToRemoveAnExistingSongFromThePlayList() throws SongAlreadyPresentInThePlaylistException, SongIsNotPresentInThePlaylistException {
-        PlayList playList = new PlayList();
-        Song song = new Song();
+    public void shouldBeAbleToRemoveAnExistingSongFromThePlayList() throws SongIsNotPresentInThePlaylistException, SongAlreadyPresentInThePlaylistException {
+        PlayList playList = new PlayList(1);
+        Song song = new Song(1);
         playList.addSong(song);
         int expectedSongsCount = 0;
 
@@ -47,18 +47,18 @@ public class PlayListTest {
     }
 
     @Test
-    public void shouldNotBeAbleToRemoveASongFromThePlaylistWhenItDoesNotExistInThePlayList(){
-        PlayList playList = new PlayList();
-        Song song = new Song();
+    public void shouldReturnSongIsNotPresentExceptionWhenSongDoesNotExistInThePlayList() {
+        PlayList playList = new PlayList(1);
+        Song song = new Song(1);
 
-        assertThrows(SongIsNotPresentInThePlaylistException.class, ()->{
+        assertThrows(SongIsNotPresentInThePlaylistException.class, () -> {
             playList.removeSong(song);
         });
     }
 
     @Test
-    public void shouldBeAbleToMakeAPlaylistShared(){
-        PlayList playList = new PlayList();
+    public void shouldBeAbleToMakeAPlaylistShared() {
+        PlayList playList = new PlayList(1);
 
         playList.share();
 
@@ -67,7 +67,7 @@ public class PlayListTest {
 
     @Test
     public void shouldBeAbleToRateAPlaylistFromOneToFive() throws InvalidRatingException {
-        PlayList playList = new PlayList();
+        PlayList playList = new PlayList(1);
         int expectedRating = 1;
 
         playList.rate(1);
@@ -77,11 +77,40 @@ public class PlayListTest {
     }
 
     @Test
-    public void shouldReturnInvalidRatingExceptionIfPlaylistIsRatedOutsideRangeOneToFive(){
-        PlayList playList = new PlayList();
-        assertThrows(InvalidRatingException.class, ()->{
-           playList.rate(10);
+    public void shouldReturnInvalidRatingExceptionIfPlaylistIsRatedOutsideTheRangeOneToFive() {
+        PlayList playList = new PlayList(1);
+        assertThrows(InvalidRatingException.class, () -> {
+            playList.rate(10);
         });
     }
+
+    @Test
+    public void shouldReturnTheShuffledPlaylist() throws SongAlreadyPresentInThePlaylistException, CloneNotSupportedException {
+        PlayList playList = new PlayList(1);
+        Song song1 = new Song(1);
+        Song song2 = new Song(2);
+        Song song3 = new Song(3);
+        playList.addSong(song1);
+        playList.addSong(song2);
+        playList.addSong(song3);
+
+        PlayList shuffledPlaylist = playList.getShuffledPlaylist();
+
+        boolean isShuffled = isShuffled(playList, shuffledPlaylist);
+        assertTrue(isShuffled);
+    }
+
+    private boolean isShuffled(PlayList playList, PlayList shuffledPlaylist) throws CloneNotSupportedException {
+        boolean isShufffled = false;
+        for (int i = 0; i < playList.size(); i++) {
+            int id = playList.getSongs().get(i).getId();
+            int id2 = shuffledPlaylist.getSongs().get(i).getId();
+            if (playList.getSongs().get(i).getId() != shuffledPlaylist.getSongs().get(i).getId()) {
+                isShufffled = true;
+            }
+        }
+        return isShufffled;
+    }
+
 
 }
