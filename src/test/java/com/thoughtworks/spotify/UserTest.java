@@ -1,9 +1,11 @@
 package com.thoughtworks.spotify;
 
+import com.thoughtworks.exceptions.PlaylistDoesNotExistException;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class UserTest {
     @Test
@@ -59,5 +61,41 @@ public class UserTest {
 
         assertThat(actualPlaylistSize, is(expectedPlaylistSize));
     }
+
+    @Test
+    public void shouldReturnTrueWhenUserIsThePlaylistCreator(){
+        User user = new User(1);
+        PlayList playList = new PlayList(1);
+        user.addPlaylist(playList);
+        assertTrue(user.isPlaylistCreater(playList));
+    }
+
+    @Test
+    public void shouldReturnFalseWhenUserIsNotThePlaylistCreator(){
+        User user = new User(1);
+        PlayList playList = new PlayList(1);
+        assertFalse(user.isPlaylistCreater(playList));
+    }
+
+    @Test
+    public void shouldBeAbleToDeleteAPlaylistWhichBelongsToTheUser() throws PlaylistDoesNotExistException {
+        User user = new User(1);
+        PlayList playList = new PlayList(1);
+        user.addPlaylist(playList);
+
+        user.deletePlaylist(playList);
+        assertFalse(user.has(playList));
+    }
+
+    @Test
+    public void shouldReturnPlaylistDoesNotExistExceptionWhenPlaylistDoesNotBelongToTheUser(){
+        User user = new User(1);
+        PlayList playList = new PlayList(1);
+
+        assertThrows(PlaylistDoesNotExistException.class, ()->{
+           user.deletePlaylist(playList);
+        });
+    }
+
 
 }

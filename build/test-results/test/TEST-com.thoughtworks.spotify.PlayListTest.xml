@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.thoughtworks.spotify.PlayListTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2022-06-13T06:37:57" hostname="sandeepsingh1thoughtworkscoms-MacBook-Pro.local" time="0.042">
+  <properties/>
+  <testcase name="shouldReturnInvalidRatingExceptionIfPlaylistIsRatedOutsideTheRangeOneToFive()" classname="com.thoughtworks.spotify.PlayListTest" time="0.018"/>
+  <testcase name="shouldBeAbleToMakeAPlaylistShared()" classname="com.thoughtworks.spotify.PlayListTest" time="0.005"/>
+  <testcase name="shouldBeAbleToAddASongToThePlayList()" classname="com.thoughtworks.spotify.PlayListTest" time="0.001"/>
+  <testcase name="shouldBeAbleToRateAPlaylistFromOneToFive()" classname="com.thoughtworks.spotify.PlayListTest" time="0.001"/>
+  <testcase name="shouldNotBeAbleToAddASongToThePlaylistWhenTheSongAlreadyExists()" classname="com.thoughtworks.spotify.PlayListTest" time="0.002"/>
+  <testcase name="shouldReturnSongIsNotPresentExceptionWhenSongDoesNotExistInThePlayList()" classname="com.thoughtworks.spotify.PlayListTest" time="0.002"/>
+  <testcase name="shouldReturnTheShuffledPlaylist()" classname="com.thoughtworks.spotify.PlayListTest" time="0.004"/>
+  <testcase name="shouldBeAbleToRemoveAnExistingSongFromThePlayList()" classname="com.thoughtworks.spotify.PlayListTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

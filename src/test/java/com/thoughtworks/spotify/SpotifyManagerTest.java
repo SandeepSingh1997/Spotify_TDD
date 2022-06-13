@@ -63,12 +63,12 @@ public class SpotifyManagerTest {
         spotifyManager.addUser(user2);
 
         List<PlayList> actualOpenPlaylists = spotifyManager.getOpenPlaylists();
-        boolean hasAllOpenPlaylists = compareOpenPlaylists(actualOpenPlaylists, expectedOpenPlaylists);
+        boolean hasAllOpenPlaylists = areTwoPlaylistsSame(actualOpenPlaylists, expectedOpenPlaylists);
 
         assertTrue(hasAllOpenPlaylists);
     }
 
-    private boolean compareOpenPlaylists(List<PlayList> actualOpenPlaylists, List<PlayList> expectedOpenPlaylists) {
+    private boolean areTwoPlaylistsSame(List<PlayList> actualOpenPlaylists, List<PlayList> expectedOpenPlaylists) {
         boolean areOpenPlaylists = true;
         for(PlayList playList : actualOpenPlaylists){
             if(!expectedOpenPlaylists.contains(playList)){

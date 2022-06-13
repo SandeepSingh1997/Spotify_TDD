@@ -1,14 +1,16 @@
 package com.thoughtworks.spotify;
 
+import com.thoughtworks.exceptions.PlaylistDoesNotExistException;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    int userId;
-    private List<PlayList> playLists;
+    int id;
+    private final List<PlayList> playLists;
 
-    public User(int userId){
-        this.userId = userId;
+    public User(int id){
+        this.id = id;
         playLists = new ArrayList<>();
     }
 
@@ -42,6 +44,21 @@ public class User {
 
     public void sharePlaylistTo(PlayList playList, User user2) throws CloneNotSupportedException {
         user2.addPlaylist(playList.clone());
+    }
+
+    public boolean isPlaylistCreater(PlayList playList) {
+        return this.playLists.contains(playList);
+    }
+
+    public void deletePlaylist(PlayList playList) throws PlaylistDoesNotExistException {
+        if(!this.playLists.contains(playList)){
+            throw new PlaylistDoesNotExistException();
+        }
+        this.playLists.remove(playList);
+    }
+
+    public boolean has(PlayList playList) {
+        return this.playLists.contains(playList);
     }
 }
 
